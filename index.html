@@ -1,12 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script src="scripts.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <meta name="description" content="WindMills">
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>WindMills</title>
 </head>
 <body>
+  <h1>Turbina-teljesítmények kiiratása és összegzése</h1>
+  <h2>A szélerőmű megrendelés.</h2>
+  <p id="desc">Szeretnék, ha építenél nekik egy kontrolláló programot, amely a következőket tudja: A reggeli bekapcsoláskor adjon nekik státuszjelentést egyesével a turbinák állapotáról, és az adott bekapcsolás pillanatában az éppen összesen elérhető energiamennyiségről (tehát mondjuk a harmadik turbinánál az első három turbina által termelt összenergia). Összesen 25 szélturbinájuk van. A mai napon az első tíz turbina teljes fordulaton üzemel, egyenként 2000 MWh-t termelve, a következő tíz fél fordulaton működik, egyenként 1000 MWh-t termelve, és az utolsó öt nem működik.</p>
+
+<script>
+
+var allTurbins = 25;
+var sumPower = 0;
+var turbineCounter = 1;
+var fullPower = 2000;
+var halfPower = 1000;
+var noPower = 0;
+
+for (turbineCounter = 1; turbineCounter <= allTurbins; turbineCounter++){
+  var x = document.createElement("P");
+  if (turbineCounter <= 10){
+    sumPower = sumPower + fullPower;
+    var t = document.createTextNode("A(z) " + turbineCounter + ". számú szélturbina " + "teljes" + " fordulaton működik, " + fullPower + "MWh áramot termelve. A farm összteljesítménye jelenleg " + sumPower + "MWh.");
+  } else if (turbineCounter <= 20) {
+    sumPower = sumPower + halfPower;
+    var t = document.createTextNode("A(z) " + turbineCounter + ". számú szélturbina " + "fél" + " fordulaton működik, " + halfPower + "MWh áramot termelve. A farm összteljesítménye jelenleg " + sumPower + "MWh.");
+  } else {
+    sumPower = sumPower + noPower;
+    var t = document.createTextNode("A(z) " + turbineCounter + ". számú szélturbina " + "áll, " + noPower + "MWh áramot termelve. A farm összteljesítménye jelenleg " + sumPower + "MWh.");
+  }
+  x.appendChild(t);
+  document.body.appendChild(x);
+}
+</script>
 </body>
 </html>

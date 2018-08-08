@@ -1,0 +1,29 @@
+/* CSS reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+}
+/* CSS reset vége*/
+
+
+* {
+	box-sizing: border-box;
+}
+
+body{
+    padding: 1vw;
+    background-color: blanchedalmond;
+}
+
+h1, h2 {
+    margin: .5rem;
+    text-align: center;
+}
+
+#desc {
+    margin-bottom: .5rem;
+    text-indent: 1rem;
+}
